@@ -1,1 +1,268 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+	<meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, target-densitydpi=medium-dpi" name="viewport">
+    <title>에버랜드 리조트 - 캐리비안 베이 비수기 쿠폰 변경 신청 안내</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="Content/reset.css" rel="stylesheet">
+    <link href="Content/common.css" rel="stylesheet">
+    <!--link href="//www.everland.com/web/common/front/font/notosans.css" media="all" rel="stylesheet" -->
+    <script src="Scripts/jquery-1.11.3.js"></script>
+    <script src="Scripts/jquery-ui-1.12.1.min.js"></script>
+    <!--script>
+        var time = 500;
+        var isOpen = false;
+        var isMobile = true;
+        var winWidth = $(window).width();
+        
+        $("document").ready(function () {
+            var browser_check = navigator.userAgent.toLowerCase();
+            if (browser_check.indexOf("msie 9") >= 0) {
+                $(".shape").css("top", "15%");
+                $(".shape").css("left", "55%");
+            }
+            
+            $(window).resize(function(){
+                var winWidth2 = $(window).width();
+                if(winWidth != winWidth2) {
+                    location.reload();    
+                }
+                
+            })
+            
+            //모바일구분
+            if(winWidth < 800) {
+                isMobile = true;
+            }else {
+                isMobile = false;
+            }
+            
+            
+            setTimeout(function(){
+                $(".box_loader span").animate({"width":"100%"},2000, function(){
+                    $(".loading_wrap").fadeOut(800, function(){
+                        $("body").css("overflow-y","auto");
+                    });
+                });
+            },800)
+            
+            
+            var isChangeBg = false;
+            //스크롤이벤트
+            $(window).scroll(function () {
+            var scrollValue = $(window).scrollTop();
+            if (scrollValue > 450) {
+                console.log(scrollValue);
+                if (!isChangeBg) {
+                    $("body").stop().animate({backgroundColor: "#fff"}, 500);
+                    $("section h1.text_main").stop().animate({color: "#ff9800"}, 500);
+                    $('.btn_sideNav').css('background-image','url(Images/Common/btn_sideNav.png)');
+                    $("#section2").stop().animate({width: "100%"}, 500, function(){ 
+                        $(".text_profile").stop().animate({"opacity":"1"});
+                    });    
+                    
+                    $(".icon_scrollM").fadeOut();
+                    
+                    isChangeBg = true;
+                }
+                if (scrollValue > 1450) {
+                    $(".text_bg").each(function () {
+                        console.log("여기");
+                        $(this).stop().animate({ "bottom": "20px", "opacity": "1" }, 1000);
+                    })
+                } else {
+                    $(".text_bg").css("bottom",0);
+                    $(".text_bg").css("opacity",0);
+                }
+            } else {
+                if (isChangeBg) {
+                    $("body").stop().animate({backgroundColor: "#2A2A2A"}, 500);
+                    $("section h1.text_main").stop().animate({color: "#fff"}, 500);
+                    $('.btn_sideNav').css('background-image','url(Images/Common/btn_sideNav_w.png)');
+                    if(isMobile){
+                        $("#section2").stop().animate({width: "90%"}, 500, function(){ 
+                            $(".text_profile").stop().animate({"opacity":"0.5"});
+                        });    
+                    }else {
+                        $("#section2").stop().animate({width: "70%"}, 500, function(){ 
+                            $(".text_profile").stop().animate({"opacity":"0.5"},400);
+                        });    
+                    }
+                    
+                    
+                    $(".icon_scrollM").fadeIn();
+                    isChangeBg = false;
+                }
+            }
+            
+                
+            var size = $(".article").length;
+            var index = $(".article").index;
+            var offset = $('#bg1').offset();
+            $(".article").click(function(){
+                $('html, body').stop().animate({'scrollTop' : 0});
+                $(".btn_back").css("display","block");
+                $("#section1").css("display","none");
+                $("#section2").css("display","none");
+                $("#section4").css("display","none");
+                $(".btn_sideNav").css("display","none");
+                if(isMobile){
+                    for(var i =0 ; i<size ; i++){
+                        if($(this).index() == i){//내가 선택한 것이면
+                            $(this).find(".bg").stop().animate({"height":"100vh"},1500)
+                        }else {
+                            $(".article").css("width",0);
+                            $(".article").eq(i).css("display","none");
+                        } 
+                        $(this).css("width","100%");
+                    }
+                    $(".wrap_works").css("height","auto");    
+                }else {
+                    for(var i =0 ; i<size ; i++){
+                        if($(this).index() == i){
+                            $(this).stop().animate({"width":"100%"},1500);
+                        }else {
+                            $(".article").css("width",0);
+                            $(".article").eq(i).css("display","none");
+                        } 
+                        $(this).css("height","auto");
+                    }
+                    $(".wrap_works").css("height","auto");   
+                    $(".text_bg").css("opacity",1);
+                }
+                
+            }); 
+                
+                
+            
+            
+            
+        });
 
+        });
+        function subClose() {
+            $(".btn_back").css("display", "none");
+            $("#section1").css("display","block");
+            $("#section2").css("display","block");
+            $("#section4").css("display","block");
+            $(".btn_sideNav").css("display","block");
+            if(isMobile){
+                $(".bg").css("height","33vh");
+                $(".wrap_works").css("height","100vh");
+                $(".article").css("display","inline-block");
+                $(".article").css("width","100%");
+            }else {
+                $(".bg").css("height","100vh");
+                $(".wrap_works").css("height","100vh");
+                $(".article").css("display","inline-block");
+                $(".article").css("width","33.3%");
+                $(".article").css("height","100vh");
+            }
+        }
+        function navOpen() {
+            if (isOpen) {
+                setTimeout(function () {
+                    $("nav li").each(function () {
+                        $(this).removeClass("text_effect");
+                    });
+                }, 500)
+                $(".bg_nav").removeClass("open");
+                $('.btn_sideNav').css('background-image', 'url(Images/Common/btn_sideNav.png)');
+                isOpen = false;
+                setTimeout(function () {
+                    $("header").css("left", "100%");
+                },1000)
+            } else {
+                $(".bg_nav").addClass("open");
+                $("header").css("left",0);
+                $("nav li").each(function () {
+                    $(this).addClass("text_effect",time);
+                    time = time + 300
+                })
+                $('.btn_sideNav').css('background-image', 'url(Images/Common/btn_close.png)');
+                isOpen = true;
+                time = 500;
+                
+                $("nav li").click(function(){
+                    setTimeout(function () {
+                    $("nav li").each(function () {
+                        $(this).removeClass("text_effect");
+                    });
+                }, 500)
+                $(".bg_nav").removeClass("open");
+                $('.btn_sideNav').css('background-image', 'url(Images/Common/btn_sideNav.png)');
+                isOpen = false;
+                setTimeout(function () {
+                    $("header").css("left", "100%");
+                },1000)
+                })
+            }
+                
+        }
+        
+
+    </script-->
+    <script>
+        $("document").ready(function(){
+            
+        })
+        function moveToPage(pcount){
+            
+        }
+    </script>
+    <style>
+        header nav {display: none}
+        .wrapper header {width:100%;}
+        .wrapper header h1 {width:100px;height:50px;background:url(http://www.ssding.com/resource_2019/image/common/img_logo.png) no-repeat; background-size: contain;}
+        .wrapper {min-width: 320px;overflow-x: hidden;}
+        .wrapper .contents {position:relative;width:100%;}
+        .wrapper .contents .txt_main {}
+        .wrapper .contents .img_main {position:relative;width:300%;}
+        .wrapper .contents .img_main > div {position:relative;width:100vw;float: left}
+        .wrapper .contents .img_main > div img {width:100%;}
+    </style>
+</head>
+<body>
+    <div class="wrapper" id="home">
+        <header>
+            <h1></h1>
+            <button type="button" class="btn_sideNav" onclick="navOpen()"></button>
+            <div class="bg_nav"></div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#section2">Profile</a></li>
+                    <li><a href="#section3">Work</a></li>
+                    <li><a href="#section4">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="contents">
+            <p class="txt_main">Design the value<br>of the data<br>Taran UXD</p>
+            <div class="img_main">
+                <div><img src="Content/img/canyon-1.jpg" /></div>
+                <div><img src="Content/img/canyon-2.jpg" /></div>
+                <div><img src="Content/img/canyon-3.jpg" /></div>
+                <ul>
+                    <li><a class="">1</a></li>
+                    <li><a class="">2</a></li>
+                    <li><a class="">3</a></li>
+                </ul>
+            </div>
+            <ul class="txt_sub">
+                <li>프로젝트명1</li>
+                <li>프로젝트명2</li>
+                <li>프로젝트명3</li>
+            </ul>
+        </div>
+        <footer>ddd</footer>
+    </div>
+    <div class="loading_wrap">
+        <div class="box_loader">
+            <span></span>
+        </div>
+    </div>
+</body>
+</html>
